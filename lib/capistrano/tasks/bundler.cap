@@ -17,7 +17,7 @@ namespace :bundler do
   task :install do
     on roles fetch(:bundle_roles) do
       within release_path do
-        execute :bundle, "--gemfile #{fetch(:bundle_gemfile)}",
+        execute (fetch(:bundle_cmd) || :bundle), "--gemfile #{fetch(:bundle_gemfile)}",
           "--path #{fetch(:bundle_dir)}",
           fetch(:bundle_flags),
           "--binstubs #{fetch(:bundle_binstubs)}",
